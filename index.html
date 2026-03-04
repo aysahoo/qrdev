@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qrdev</title>
+  <meta name="description" content="Instantly access your dev server from any device on your network." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='white' viewBox='0 0 256 256'><path d='M120,56v48a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V56A16,16,0,0,1,56,40h48A16,16,0,0,1,120,56Zm-16,80H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm96-96H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40ZM144,184a8,8,0,0,0,8-8V144a8,8,0,0,0-16,0v32A8,8,0,0,0,144,184Zm64-32H184v-8a8,8,0,0,0-16,0v56H144a8,8,0,0,0,0,16h32a8,8,0,0,0,8-8V168h24a8,8,0,0,0,0-16Zm0,32a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V192A8,8,0,0,0,208,184Z'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0e0e0e;
+      --text: #d4d4d4;
+      --muted: #777;
+      --border: #2a2a2a;
+      --link: #d4d4d4;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+
+    /* Nav */
+    nav {
+      padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav .logo svg {
+      width: 22px;
+      height: 22px;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* Content */
+    main {
+      flex: 1;
+      padding: 3rem 0 6rem;
+    }
+
+    h1 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #eee;
+    }
+    h1 span {
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .intro {
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+    section h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #eee;
+    }
+    section p {
+      color: var(--muted);
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      background: #1a1a1a;
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+    }
+
+    .install-block {
+      background: #141414;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text);
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .install-block:hover { border-color: #444; }
+    .install-block .dollar { color: var(--muted); user-select: none; }
+
+    .examples {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .examples code {
+      display: block;
+      margin: 0.25rem 0;
+    }
+
+    a.link {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    a.link:hover { color: #fff; }
+
+    /* Footer */
+    footer {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <nav>
+      <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 256 256"><path d="M120,56v48a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V56A16,16,0,0,1,56,40h48A16,16,0,0,1,120,56Zm-16,80H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm96-96H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40ZM144,184a8,8,0,0,0,8-8V144a8,8,0,0,0-16,0v32A8,8,0,0,0,144,184Zm64-32H184v-8a8,8,0,0,0-16,0v56H144a8,8,0,0,0,0,16h32a8,8,0,0,0,8-8V168h24a8,8,0,0,0,0-16Zm0,32a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V192A8,8,0,0,0,208,184Z"/></svg></div>
+      <a href="https://github.com/aysahoo/qrdev" target="_blank">GitHub</a>
+    </nav>
+
+    <main>
+      <h1>qrdev</h1>
+      <p class="intro">QR code for your dev server. Scan from your phone, test on any device — instantly.</p>
+
+      <section>
+        <h2>About</h2>
+        <p>
+          Prepend <code>qrdev</code> to any dev command. It runs your server, watches for a port,
+          finds your local network IP, and shows a QR code you can scan from any device on the same Wi-Fi.
+          No config. No plugins. No framework lock-in. Works with everything.
+        </p>
+      </section>
+
+      <section>
+        <h2>Way 1 — Run directly</h2>
+        <p>Install globally and prepend <code>qrdev</code> to any dev command.</p>
+        <div class="install-block" onclick="navigator.clipboard.writeText('npm i -g qrdev')">
+          <span class="dollar">$ </span>npm i -g qrdev
+        </div>
+        <p>Then just use it:</p>
+        <div class="examples">
+          <code>qrdev vite</code>
+          <code>qrdev next dev</code>
+          <code>qrdev node server.js</code>
+          <code>qrdev python -m http.server 8000</code>
+        </div>
+      </section>
+
+      <section>
+        <h2>Way 2 — Add to your scripts</h2>
+        <p>Install as a dev dependency in your project.</p>
+        <div class="install-block" onclick="navigator.clipboard.writeText('npm i -D qrdev')">
+          <span class="dollar">$ </span>npm i -D qrdev
+        </div>
+        <p>Then update your <code>package.json</code>:</p>
+        <div class="install-block">
+          "scripts": {<br />
+          &nbsp;&nbsp;"dev": "qrdev &lt;your-dev-command&gt;"<br />
+          }
+        </div>
+        <p>For example:</p>
+        <div class="examples">
+          <code>"dev": "qrdev vite"</code>
+          <code>"dev": "qrdev next dev"</code>
+          <code>"dev": "qrdev node server.js"</code>
+        </div>
+        <p style="color:var(--muted);font-size:0.85rem;margin-top:0.75rem;">Now <code>npm run dev</code> will automatically show a QR code — no extra steps.</p>
+      </section>
+
+      <section>
+        <h2>Get Started</h2>
+        <p>
+          View the full documentation and source on
+          <a class="link" href="https://github.com/aysahoo/qrdev" target="_blank">GitHub</a>, or install it from
+          <a class="link" href="https://www.npmjs.com/package/qrdev" target="_blank">npm</a> to get started.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <span id="version">v-.-.-</span>
+      <span>Crafted by <a href="https://x.com/ayushfyi" target="_blank">Ayush</a></span>
+    </footer>
+  </div>
+
+  <script>
+    fetch('https://registry.npmjs.org/qrdev/latest')
+      .then(r => r.json())
+      .then(d => document.getElementById('version').textContent = 'v' + d.version)
+      .catch(() => {});
+  </script>
+</body>
+</html>
