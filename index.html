@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qrdev</title>
-  <meta name="description" content="Instantly access your dev server from any device on your network." />
+  <title>qrdev — Zero-dependency QR code for your dev server</title>
+  <meta name="description" content="Zero-dependency CLI — wrap any dev server command and get a QR code for LAN access. No config, no plugins, no framework lock-in." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='white' viewBox='0 0 256 256'><path d='M120,56v48a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V56A16,16,0,0,1,56,40h48A16,16,0,0,1,120,56Zm-16,80H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm96-96H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40ZM144,184a8,8,0,0,0,8-8V144a8,8,0,0,0-16,0v32A8,8,0,0,0,144,184Zm64-32H184v-8a8,8,0,0,0-16,0v56H144a8,8,0,0,0,0,16h32a8,8,0,0,0,8-8V168h24a8,8,0,0,0,0-16Zm0,32a8,8,0,0,0-8,8v16a8,8,0,0,0,16,0V192A8,8,0,0,0,208,184Z'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -157,15 +157,15 @@
     </nav>
 
     <main>
-      <h1>qrdev</h1>
-      <p class="intro">QR code for your dev server. Scan from your phone, test on any device — instantly.</p>
+      <h1>qrdev <span>— zero dependency</span></h1>
+      <p class="intro">Instantly access your dev server from any device on your network. No config. No plugins. No framework lock-in.</p>
 
       <section>
         <h2>About</h2>
         <p>
-          Prepend <code>qrdev</code> to any dev command. It runs your server, watches for a port,
-          finds your local network IP, and shows a QR code you can scan from any device on the same Wi-Fi.
-          No config. No plugins. No framework lock-in. Works with everything.
+          Just prepend <code>qrdev</code> to your dev command. It runs your server, detects the port,
+          and shows a <strong>QR code</strong> you can scan from any device on the same network.
+          Zero dependencies. Works with any dev server or package manager.
         </p>
       </section>
 
@@ -175,8 +175,12 @@
         <div class="install-block" onclick="navigator.clipboard.writeText('npm i -g qrdev')">
           <span class="dollar">$ </span>npm i -g qrdev
         </div>
-        <p>Then just use it:</p>
+        <p>Then just use it — works with <strong>any</strong> dev server or package manager:</p>
         <div class="examples">
+          <code>qrdev npm run dev</code>
+          <code>qrdev bun run dev</code>
+          <code>qrdev yarn dev</code>
+          <code>qrdev pnpm dev</code>
           <code>qrdev vite</code>
           <code>qrdev next dev</code>
           <code>qrdev node server.js</code>
@@ -201,8 +205,22 @@
           <code>"dev": "qrdev vite"</code>
           <code>"dev": "qrdev next dev"</code>
           <code>"dev": "qrdev node server.js"</code>
+          <code>"dev": "qrdev python -m http.server 8000"</code>
         </div>
-        <p style="color:var(--muted);font-size:0.85rem;margin-top:0.75rem;">Now <code>npm run dev</code> will automatically show a QR code — no extra steps.</p>
+        <p style="color:var(--muted);font-size:0.85rem;margin-top:0.75rem;">Now <code>npm run dev</code> / <code>bun run dev</code> will automatically show a QR code — no extra steps.</p>
+      </section>
+
+      <section>
+        <h2>CLI Flags</h2>
+        <div class="examples">
+          <code>qrdev -h, --help&nbsp;&nbsp;&nbsp;&nbsp;Show help message</code>
+          <code>qrdev -v, --version&nbsp;&nbsp;Show version number</code>
+        </div>
+      </section>
+
+      <section>
+        <h2>Requirements</h2>
+        <p><strong>Node.js</strong> >= 14. Both devices must be on the same Wi-Fi / local network.</p>
       </section>
 
       <section>
