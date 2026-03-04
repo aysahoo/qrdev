@@ -35,4 +35,7 @@ jobs:
           git config user.email "github-actions@github.com"
           npm version patch -m "chore: bump version to %s [skip ci]"
           git push
-      - run: npm publish --provenance --access public
+      - name: Publish
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ""
