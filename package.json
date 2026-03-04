@@ -1,6 +1,6 @@
 {
   "name": "qrdev",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Wrap any dev server command and show a QR code for LAN access",
   "bin": {
     "qrdev": "bin/cli.js"
