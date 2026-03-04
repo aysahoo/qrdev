@@ -1,18 +1,31 @@
 {
   "name": "devqr",
   "version": "1.0.0",
-  "description": "Wrap any dev server command and show a QR code for mobile access",
+  "description": "Wrap any dev server command and show a QR code for LAN access",
   "bin": {
     "devqr": "./bin/cli.js"
   },
+  "files": [
+    "bin/cli.js"
+  ],
   "keywords": [
     "qr",
-    "dev",
+    "qrcode",
+    "dev-server",
+    "lan",
+    "network",
     "mobile",
-    "local",
-    "network"
+    "cli"
   ],
+  "author": "Ayush Ranjan Sahoo",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aysahoo/devqr"
+  },
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
     "qrcode-terminal": "^0.12.0"
   }

@@ -18,7 +18,7 @@ function detectPort(output) {
   return match ? match[1] : null;
 }
 
-const [,, cmd, ...args] = process.argv;
+const [, , cmd, ...args] = process.argv;
 
 if (!cmd) {
   console.log('Usage: devqr <command>');
