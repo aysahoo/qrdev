@@ -16,11 +16,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - run: npm install -g npm@latest
+      - run: npm --version
       - run: npm ci
-      - name: Remove .npmrc to allow pure OIDC auth
+      - name: Remove any .npmrc files
         run: rm -f .npmrc ~/.npmrc
-      - name: Unset NODE_AUTH_TOKEN
-        run: echo "NODE_AUTH_TOKEN=" >> $GITHUB_ENV
       - name: Check if version already published
         id: check
         run: |
@@ -38,4 +38,6 @@ jobs:
           npm version patch -m "chore: bump version to %s [skip ci]"
           git push
       - name: Publish
-        run: npm publish --access public
+        run: |
+          unset NODE_AUTH_TOKEN
+          npm publish --access public --verbose
