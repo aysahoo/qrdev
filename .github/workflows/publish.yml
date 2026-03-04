@@ -17,7 +17,10 @@ jobs:
         with:
           node-version: 24
       - run: npm install -g npm@latest
+      - run: npm --version
       - run: npm ci
+      - name: Remove any .npmrc that may interfere with OIDC
+        run: rm -f .npmrc ~/.npmrc
       - name: Check if version already published
         id: check
         run: |
@@ -35,4 +38,4 @@ jobs:
           npm version patch -m "chore: bump version to %s [skip ci]"
           git push
       - name: Publish
-        run: npm publish --provenance --access public
+        run: npm publish --provenance --access public --verbose

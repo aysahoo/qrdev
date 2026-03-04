@@ -22,7 +22,7 @@
   "homepage": "https://github.com/aysahoo/devqr",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aysahoo/devqr"
+    "url": "git+https://github.com/aysahoo/devqr.git"
   },
   "engines": {
     "node": ">=14"
