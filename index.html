@@ -388,7 +388,7 @@
     const aiPrompt = `Please install and configure the \`qrdev\` package in this project so I can access my local dev server from any device on my Wi-Fi network.
 
 ### Steps:
-1. Install it as a dev dependency (\`npm i -D qrdev\`).
+1. Check what package manager I'm using (npm, yarn, pnpm, bun) and install it as a dev dependency.
 2. Update my \`package.json\`: prepend \`"qrdev"\` to my existing \`"dev"\` script. 
    - Example: change \`"next dev"\` to \`"qrdev next dev"\`, or \`"vite"\` to \`"qrdev vite"\`.
    - If there's no dev script, please add one.
