@@ -5,6 +5,7 @@
     <a href="https://www.npmjs.com/package/qrdev"><img src="https://img.shields.io/npm/v/qrdev?color=blue&label=npm" alt="npm version"></a>
     <a href="https://www.npmjs.com/package/qrdev"><img src="https://img.shields.io/npm/dm/qrdev?color=green" alt="downloads"></a>
     <a href="https://github.com/aysahoo/devqr/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/qrdev" alt="license"></a>
+    <img src="https://img.shields.io/badge/dependencies-0-brightgreen" alt="zero dependencies">
   </p>
 </p>
 

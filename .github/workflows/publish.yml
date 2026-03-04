@@ -21,7 +21,7 @@ jobs:
           node-version: 24
       - run: npm install -g npm@latest
       - run: npm --version
-      - run: npm ci
+      - run: node --check bin/cli.js
       - name: Remove any .npmrc files
         run: rm -f .npmrc ~/.npmrc
       - name: Check if version already published

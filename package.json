@@ -1,12 +1,13 @@
 {
   "name": "qrdev",
-  "version": "1.0.2",
-  "description": "Wrap any dev server command and show a QR code for LAN access",
+  "version": "1.1.0",
+  "description": "Zero-dependency CLI — wrap any dev server command and get a QR code for LAN access",
   "bin": {
     "qrdev": "bin/cli.js"
   },
   "files": [
-    "bin/cli.js"
+    "bin/cli.js",
+    "bin/qr.js"
   ],
   "keywords": [
     "qr",
@@ -15,7 +16,8 @@
     "lan",
     "network",
     "mobile",
-    "cli"
+    "cli",
+    "zero-dependency"
   ],
   "author": "Ayush Ranjan Sahoo",
   "license": "MIT",
@@ -26,8 +28,5 @@
   },
   "engines": {
     "node": ">=14"
-  },
-  "dependencies": {
-    "qrcode-terminal": "^0.12.0"
   }
 }
